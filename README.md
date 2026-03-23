@@ -23,27 +23,26 @@ The system follows a layered processing pipeline:
 
 1. **Specification Processing Layer**
    - Extracts semantic meaning from input text
-
 2. **Assertion Generation Layer**
    - Generates candidate assertions using LLMs
-
 3. **Validation Layer**
    - Cross-checks assertions using secondary models
-
 4. **Subsumption Analysis Layer**
    - Removes redundant or conflicting assertions
 
 ---
 
 ## Project Structure
-
+```
 Automatic-Assertion-Generator/
 │
-├── config.json # Model configuration file
-├── layer modules # Multi-layer processing pipeline
-├── reports/ # Generated assertion reports
-├── scripts/ # Execution scripts
+├── config.json          # Model configuration file
+├── layer modules        # Multi-layer processing pipeline
+├── reports/             # Generated assertion reports
+├── scripts/             # Execution scripts
 └── README.md
+```
+
 ---
 
 ## Technologies Used
@@ -58,20 +57,17 @@ Automatic-Assertion-Generator/
 ## How to Run
 
 1. Clone the repository:
-
-
+```bash
 git clone https://github.com/meow1724/Automatic-Assertion-Generator.git
-
 cd Automatic-Assertion-Generator
-
+```
 
 2. Configure API keys locally in `config.local.json`
 
 3. Run the pipeline script:
-
-
+```bash
 python main.py
-
+```
 
 ---
 
@@ -83,5 +79,3 @@ Through this project:
 - Designed a layered semantic validation pipeline
 - Automated assertion generation from specifications
 - Improved reliability using cross-model validation
-
----
