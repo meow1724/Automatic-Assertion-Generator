@@ -1,0 +1,51 @@
+MODULE main
+  VAR
+  q0 : boolean;
+  q1 : boolean;
+  head : 0..1;
+  tail : 0..1;
+  push : boolean;
+  pop : boolean;
+
+  DEFINE
+  empty := (head = tail) & !q0 & !q1;
+  full := (head = tail) & (q0 | q1);
+  can_push := !full;
+  can_pop := !empty;
+
+  ASSIGN
+  init(q0) := FALSE;
+  init(q1) := FALSE;
+  init(head) := 0;
+  init(tail) := 0;
+
+  next(q0) := case
+  push & can_push & (tail = 0) : TRUE;
+  pop & can_pop & (head = 0) : FALSE;
+  TRUE : q0;
+  esac;
+
+  next(q1) := case
+  push & can_push & (tail = 1) : TRUE;
+  pop & can_pop & (head = 1) : FALSE;
+  TRUE : q1;
+  esac;
+
+  next(head) := case
+  pop & can_pop & (head = 0) : 1;
+  pop & can_pop & (head = 1) : 0;
+  TRUE : head;
+  esac;
+
+  next(tail) := case
+  push & can_push & (tail = 0) : 1;
+  push & can_push & (tail = 1) : 0;
+  TRUE : tail;
+  esac;
+
+LTLSPEC G (head = tail & q0 & !q1 -> X(can_pop) = TRUE & X(can_push) = TRUE & X(full) = FALSE);
+LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q1) = q1 & X(q0) = !q0);
+LTLSPEC G (head != tail & q0 & q1 -> X(full) = TRUE & X(empty) = FALSE);
+LTLSPEC G (head = tail & !q0 & q1 -> X(can_pop) = TRUE & X(can_push) = TRUE & X(empty) = FALSE);
+LTLSPEC G (head = tail & !q0 & !q1 -> X(full) = FALSE & X(empty) = TRUE & X(can_push) = TRUE);
+LTLSPEC G (head = tail & q0 & q1 -> X(full) = TRUE & X(empty) = FALSE & X(can_pop) = TRUE);

@@ -1,0 +1,91 @@
+FAIL: LTLSPEC G (head = tail -> X(full) = (q0 | q1));
+Counterexample:
+-- as demonstrated by the following execution sequence
+Trace Description: LTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    q0 = FALSE
+    q1 = FALSE
+    head = 0
+    tail = 0
+    push = TRUE
+    pop = FALSE
+    can_pop = FALSE
+    can_push = TRUE
+    full = FALSE
+    empty = TRUE
+  -- Loop starts here
+  -> State: 1.2 <-
+    q0 = TRUE
+    tail = 1
+    pop = TRUE
+    can_pop = TRUE
+    empty = FALSE
+  -> State: 1.3 <-
+    q0 = FALSE
+    q1 = TRUE
+    head = 1
+    tail = 0
+  -> State: 1.4 <-
+    q0 = TRUE
+    q1 = FALSE
+    head = 0
+    tail = 1
+
+
+FAIL: LTLSPEC G (full & push -> X(push) = FALSE);
+Counterexample:
+-- as demonstrated by the following execution sequence
+Trace Description: LTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 2.1 <-
+    q0 = FALSE
+    q1 = FALSE
+    head = 0
+    tail = 0
+    push = FALSE
+    pop = FALSE
+    can_pop = FALSE
+    can_push = TRUE
+    full = FALSE
+    empty = TRUE
+  -> State: 2.2 <-
+    push = TRUE
+  -> State: 2.3 <-
+    q0 = TRUE
+    tail = 1
+    can_pop = TRUE
+    empty = FALSE
+  -> State: 2.4 <-
+    q1 = TRUE
+    tail = 0
+    can_push = FALSE
+    full = TRUE
+  -- Loop starts here
+  -> State: 2.5 <-
+  -> State: 2.6 <-
+    push = FALSE
+  -> State: 2.7 <-
+    push = TRUE
+
+
+FAIL: LTLSPEC G (empty & pop -> X(pop) = FALSE);
+Counterexample:
+-- as demonstrated by the following execution sequence
+Trace Description: LTL Counterexample 
+Trace Type: Counterexample 
+  -- Loop starts here
+  -> State: 3.1 <-
+    q0 = FALSE
+    q1 = FALSE
+    head = 0
+    tail = 0
+    push = FALSE
+    pop = TRUE
+    can_pop = FALSE
+    can_push = TRUE
+    full = FALSE
+    empty = TRUE
+  -> State: 3.2 <-
+
+

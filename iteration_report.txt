@@ -1,0 +1,94 @@
+LAYER 5: ITERATIVE COVERAGE REFINEMENT REPORT
+==============================================
+
+Initial verified assertions: 16
+
+--- Iteration 1 ---
+  Generated: 15 new unique assertions
+  Voted through: 11/15
+  Model check: 8 PASS, 3 FAIL
+  New PASS added: 8
+  Master total: 24
+    [NEW PASS] LTLSPEC G (push & pop & can_push & can_pop -> X(q1) = q1);
+    [NEW PASS] LTLSPEC G (head = tail & q0 & q1 -> X(full) = TRUE);
+    [NEW PASS] LTLSPEC G (push & can_push & tail = 1 & q1 -> X(q0) = q0);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 0 & q0 -> X(q1) = q1);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q0) = q0);
+    [NEW PASS] LTLSPEC G (head != tail & q0 & q1 -> X(full) = FALSE);
+    [NEW PASS] LTLSPEC G (head != tail & !q0 & !q1 -> X(empty) = FALSE);
+    [NEW PASS] SPEC AG (can_push & can_pop -> !(push & pop));
+    [NEW FAIL] LTLSPEC G (push & pop & can_push & can_pop -> X(q0) = q0);
+    [NEW FAIL] LTLSPEC G (head = tail & !q0 & !q1 -> X(empty) = TRUE);
+    [NEW FAIL] LTLSPEC G (push & can_push & tail = 0 & q0 -> X(q1) = q1);
+  After subsumption: 19
+
+--- Iteration 2 ---
+  Generated: 12 new unique assertions
+  Voted through: 9/12
+  Model check: 9 PASS, 0 FAIL
+  New PASS added: 9
+  Master total: 28
+    [NEW PASS] LTLSPEC G (push & can_push & tail = 0 & q0 -> X(q1) = q1 & X(q0) = TRUE);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q0) = q0 & X(q1) = FALSE);
+    [NEW PASS] LTLSPEC G (head = tail & q0 & !q1 -> X(full) = FALSE & X(empty) = FALSE);
+    [NEW PASS] LTLSPEC G (push & can_push & tail = 1 & !q1 -> X(q1) = TRUE & X(q0) = q0);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 0 & q0 -> X(q0) = FALSE & X(head) = 1);
+    [NEW PASS] LTLSPEC G (head != tail & !q0 & !q1 -> X(can_push) = TRUE & X(can_pop) = TRUE);
+    [NEW PASS] LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = q1);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q1) = FALSE & X(head) = 0);
+    [NEW PASS] LTLSPEC G (head = tail & !q0 & q1 -> X(full) = FALSE & X(empty) = FALSE);
+  After subsumption: 21
+
+--- Iteration 3 ---
+  Generated: 11 new unique assertions
+  Voted through: 7/11
+  Model check: 3 PASS, 4 FAIL
+  New PASS added: 3
+  Master total: 24
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q1) = FALSE & X(head) = 0);
+    [NEW PASS] LTLSPEC G (head != tail & q0 & q1 -> X(can_push) = FALSE & X(can_pop) = TRUE);
+    [NEW PASS] LTLSPEC G (head = tail & q0 & !q1 -> X(can_pop) = TRUE & X(can_push) = TRUE);
+    [NEW FAIL] LTLSPEC G (head = tail & !q0 & !q1 -> X(empty) = TRUE & X(full) = FALSE);
+    [NEW FAIL] LTLSPEC G (push & can_push & tail = 1 & !q1 -> X(q1) = TRUE & X(q0) = !q0);
+    [NEW FAIL] LTLSPEC G (head = tail & q0 & q1 -> X(full) = TRUE & X(empty) = FALSE);
+    [NEW FAIL] LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = !q1);
+  After subsumption: 19
+
+--- Iteration 4 ---
+  Generated: 12 new unique assertions
+  Voted through: 6/12
+  Model check: 6 PASS, 0 FAIL
+  New PASS added: 6
+  Master total: 25
+    [NEW PASS] LTLSPEC G (head = tail & !q0 & !q1 -> X(head) = head);
+    [NEW PASS] LTLSPEC G (head = tail & !q0 & !q1 -> X(tail) = tail);
+    [NEW PASS] LTLSPEC G (head != tail & !q0 & !q1 -> X(can_push) = TRUE);
+    [NEW PASS] LTLSPEC G (head != tail & !q0 & !q1 -> X(can_pop) = TRUE);
+    [NEW PASS] LTLSPEC G (push & can_push -> X(can_pop) = TRUE);
+    [NEW PASS] LTLSPEC G (pop & can_pop -> X(can_push) = TRUE);
+  After subsumption: 20
+
+--- Iteration 5 ---
+  Generated: 13 new unique assertions
+  Voted through: 6/13
+  Model check: 4 PASS, 2 FAIL
+  New PASS added: 4
+  Master total: 24
+    [NEW PASS] LTLSPEC G (head = tail & q0 & !q1 -> X(can_pop) = TRUE & X(can_push) = TRUE & X(full) = FALSE);
+    [NEW PASS] LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q1) = q1 & X(q0) = !q0);
+    [NEW PASS] LTLSPEC G (head != tail & q0 & q1 -> X(full) = TRUE & X(empty) = FALSE);
+    [NEW PASS] LTLSPEC G (head = tail & !q0 & q1 -> X(can_pop) = TRUE & X(can_push) = TRUE & X(empty) = FALSE);
+    [NEW FAIL] LTLSPEC G (head = tail & !q0 & !q1 -> X(full) = FALSE & X(empty) = TRUE & X(can_push) = TRUE);
+    [NEW FAIL] LTLSPEC G (head = tail & q0 & q1 -> X(full) = TRUE & X(empty) = FALSE & X(can_pop) = TRUE);
+  After subsumption: 17
+
+
+=========================================
+FINAL SUMMARY
+=========================================
+Initial assertions:  16
+Total generated:     63
+Total voted through: 39
+Total new PASS:      30
+Total new FAIL:      9
+Final master count:  17

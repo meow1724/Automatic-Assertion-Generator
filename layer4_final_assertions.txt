@@ -1,0 +1,12 @@
+SPEC AG !(full & empty);
+LTLSPEC G (push & !full -> X(!empty));
+LTLSPEC G (pop & !empty -> X(!full));
+LTLSPEC G (push & !full -> X(can_push) = can_push);
+LTLSPEC G (pop & !empty -> X(can_pop) = can_pop);
+LTLSPEC G (push & !full & tail = 0 -> X(tail) = 1);
+LTLSPEC G (push & can_push & tail = 1 & !q1 -> X(q1) = TRUE & X(q0) = q0);
+LTLSPEC G (head != tail & !q0 & !q1 -> X(can_push) = TRUE & X(can_pop) = TRUE);
+LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = q1);
+LTLSPEC G (head = tail & !q0 & !q1 -> X(head) = head);
+LTLSPEC G (push & can_push -> X(can_pop) = TRUE);
+LTLSPEC G (pop & can_pop -> X(can_push) = TRUE);

@@ -1,0 +1,58 @@
+LAYER 4: SUBSUMPTION & CLUSTERING REPORT
+=========================================
+
+Input: 17 passed assertions from Layer 3
+Subsumed (removed): 5
+Remaining: 12
+LLM calls: 1
+
+--- Subsumption Details ---
+  REMOVED P7: SPEC AG (can_push & can_pop -> !(push & pop));
+    Reason: P1 safety invariant already covers this
+  REMOVED P12: LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q1) = FALSE & X(head) = 0);
+    Reason: P1 safety invariant already covers this
+  REMOVED P8: LTLSPEC G (head = tail & q0 & !q1 -> X(full) = FALSE & X(empty) = FALSE);
+    Reason: P4 has stricter guard with same conclusion
+  REMOVED P13: LTLSPEC G (head = tail & q0 & !q1 -> X(can_pop) = TRUE & X(can_push) = TRUE);
+    Reason: P10 covers the same scenario with less restrictions
+  REMOVED P17: LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q1) = q1 & X(q0) = !q0);
+    Reason: P12 is more specific and implies the same conclusions as P17
+
+--- Cluster: boundary ---
+  [KEPT]     P2: LTLSPEC G (push & !full -> X(!empty));
+  [KEPT]     P3: LTLSPEC G (pop & !empty -> X(!full));
+  [KEPT]     P15: LTLSPEC G (push & can_push -> X(can_pop) = TRUE);
+  [KEPT]     P16: LTLSPEC G (pop & can_pop -> X(can_push) = TRUE);
+
+--- Cluster: count_transitions ---
+  [KEPT]     P4: LTLSPEC G (push & !full -> X(can_push) = can_push);
+  [KEPT]     P5: LTLSPEC G (pop & !empty -> X(can_pop) = can_pop);
+  [KEPT]     P6: LTLSPEC G (push & !full & tail = 0 -> X(tail) = 1);
+  [SUBSUMED] P8: LTLSPEC G (head = tail & q0 & !q1 -> X(full) = FALSE & X(empty) = FALSE);
+  [KEPT]     P11: LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = q1);
+  [SUBSUMED] P13: LTLSPEC G (head = tail & q0 & !q1 -> X(can_pop) = TRUE & X(can_push) = TRUE);
+  [KEPT]     P14: LTLSPEC G (head = tail & !q0 & !q1 -> X(head) = head);
+
+--- Cluster: head_pointer ---
+  [KEPT]     P10: LTLSPEC G (head != tail & !q0 & !q1 -> X(can_push) = TRUE & X(can_pop) = TRUE);
+  [SUBSUMED] P12: LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q1) = FALSE & X(head) = 0);
+  [KEPT]     P14: LTLSPEC G (head = tail & !q0 & !q1 -> X(head) = head);
+
+--- Cluster: memory_clear ---
+  [SUBSUMED] P12: LTLSPEC G (pop & can_pop & head = 1 & q1 -> X(q1) = FALSE & X(head) = 0);
+  [SUBSUMED] P17: LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q1) = q1 & X(q0) = !q0);
+
+--- Cluster: memory_write ---
+  [KEPT]     P9: LTLSPEC G (push & can_push & tail = 1 & !q1 -> X(q1) = TRUE & X(q0) = q0);
+  [KEPT]     P11: LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = q1);
+  [SUBSUMED] P17: LTLSPEC G (pop & can_pop & head = 1 & !q1 -> X(q1) = q1 & X(q0) = !q0);
+
+--- Cluster: safety_invariants ---
+  [KEPT]     P1: SPEC AG !(full & empty);
+  [SUBSUMED] P7: SPEC AG (can_push & can_pop -> !(push & pop));
+
+--- Cluster: tail_pointer ---
+  [KEPT]     P6: LTLSPEC G (push & !full & tail = 0 -> X(tail) = 1);
+  [KEPT]     P9: LTLSPEC G (push & can_push & tail = 1 & !q1 -> X(q1) = TRUE & X(q0) = q0);
+  [KEPT]     P11: LTLSPEC G (push & can_push & tail = 0 & !q0 -> X(q0) = TRUE & X(q1) = q1);
+

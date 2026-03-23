@@ -1,0 +1,62 @@
+{
+  "specsllm": [
+    {
+      "name": "Gemini 3.1 Flash Lite (semantic)",
+      "provider": "google",
+      "modelId": "gemini-3.1-flash-lite-preview",
+      "apiKey": "YOUR_GOOGLE_API_KEY",
+      "trustWeight": 1.0
+    }
+  ],
+
+  "layer1Llms": [
+    {
+      "name": "Llama 3.3 70B Leader",
+      "provider": "groq",
+      "modelId": "llama-3.3-70b-versatile",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1.0
+    },
+    {
+      "name": "Kimi K2 Extender",
+      "provider": "groq",
+      "modelId": "moonshotai/kimi-k2-instruct",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1.0
+    }
+  ],
+
+  "layer2Llms": [
+    {
+      "name": "Llama 3.1 8B Validator",
+      "provider": "groq",
+      "modelId": "llama-3.1-8b-instant",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1.0
+    },
+    {
+      "name": "Groq 2",
+      "provider": "groq",
+      "modelId": "llama-3.3-70b-versatile",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1.0
+    },
+    {
+      "name": "Groq 22",
+      "provider": "groq",
+      "modelId": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1.0
+    }
+  ],
+
+  "layer4Llms": [
+    {
+      "name": "Llama 3.3 70B Subsumption Analyzer",
+      "provider": "groq",
+      "modelId": "llama-3.3-70b-versatile",
+      "apiKey": "YOUR_GROQ_API_KEY",
+      "trustWeight": 1
+    }
+  ]
+}
