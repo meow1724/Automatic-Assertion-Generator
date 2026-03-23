@@ -36,3 +36,52 @@ The system follows a layered processing pipeline:
 ---
 
 ## Project Structure
+
+Automatic-Assertion-Generator/
+│
+├── config.json # Model configuration file
+├── layer modules # Multi-layer processing pipeline
+├── reports/ # Generated assertion reports
+├── scripts/ # Execution scripts
+└── README.md
+---
+
+## Technologies Used
+
+- Python
+- Large Language Models (Groq / Gemini)
+- JSON configuration pipeline
+- Prompt-based semantic processing
+
+---
+
+## How to Run
+
+1. Clone the repository:
+
+
+git clone https://github.com/meow1724/Automatic-Assertion-Generator.git
+
+cd Automatic-Assertion-Generator
+
+
+2. Configure API keys locally in `config.local.json`
+
+3. Run the pipeline script:
+
+
+python main.py
+
+
+---
+
+## Learning Outcomes
+
+Through this project:
+
+- Built an LLM-driven verification workflow
+- Designed a layered semantic validation pipeline
+- Automated assertion generation from specifications
+- Improved reliability using cross-model validation
+
+---
